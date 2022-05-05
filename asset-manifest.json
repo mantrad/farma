@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/farma/static/css/main.feeb957e.css",
-    "main.js": "/farma/static/js/main.a47b23d8.js",
+    "main.js": "/farma/static/js/main.fcebfba0.js",
     "static/js/787.1199a6d1.chunk.js": "/farma/static/js/787.1199a6d1.chunk.js",
     "index.html": "/farma/index.html",
     "main.feeb957e.css.map": "/farma/static/css/main.feeb957e.css.map",
-    "main.a47b23d8.js.map": "/farma/static/js/main.a47b23d8.js.map",
+    "main.fcebfba0.js.map": "/farma/static/js/main.fcebfba0.js.map",
     "787.1199a6d1.chunk.js.map": "/farma/static/js/787.1199a6d1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.feeb957e.css",
-    "static/js/main.a47b23d8.js"
+    "static/js/main.fcebfba0.js"
   ]
 }
