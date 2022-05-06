@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/farma/static/css/main.feeb957e.css",
-    "main.js": "/farma/static/js/main.6ce1d88f.js",
+    "main.js": "/farma/static/js/main.bd1d4fa0.js",
     "static/js/790.a66ff101.chunk.js": "/farma/static/js/790.a66ff101.chunk.js",
     "static/js/21.a994b43f.chunk.js": "/farma/static/js/21.a994b43f.chunk.js",
     "static/js/446.3863d22a.chunk.js": "/farma/static/js/446.3863d22a.chunk.js",
@@ -41,7 +41,7 @@
     "static/js/876.760742ef.chunk.js": "/farma/static/js/876.760742ef.chunk.js",
     "index.html": "/farma/index.html",
     "main.feeb957e.css.map": "/farma/static/css/main.feeb957e.css.map",
-    "main.6ce1d88f.js.map": "/farma/static/js/main.6ce1d88f.js.map",
+    "main.bd1d4fa0.js.map": "/farma/static/js/main.bd1d4fa0.js.map",
     "21.a994b43f.chunk.js.map": "/farma/static/js/21.a994b43f.chunk.js.map",
     "446.3863d22a.chunk.js.map": "/farma/static/js/446.3863d22a.chunk.js.map",
     "908.9d56ad56.chunk.js.map": "/farma/static/js/908.9d56ad56.chunk.js.map",
@@ -80,6 +80,6 @@
   },
   "entrypoints": [
     "static/css/main.feeb957e.css",
-    "static/js/main.6ce1d88f.js"
+    "static/js/main.bd1d4fa0.js"
   ]
 }
