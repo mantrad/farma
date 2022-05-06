@@ -9,8 +9,8 @@ import { Box, Stack, Card, CardHeader, Typography, TextField, InputAdornment } f
 import { LoadingButton } from '@mui/lab';
 
 Hire.propTypes = {
-  Balance: PropTypes.number,
-  Power: PropTypes.number,
+  Balance: PropTypes.string,
+  Power: PropTypes.string,
   Instance: PropTypes.object,
   Account: PropTypes.string
 };

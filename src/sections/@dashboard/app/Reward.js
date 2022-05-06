@@ -8,9 +8,9 @@ import { LoadingButton } from '@mui/lab';
 
 Reward.propTypes = {
   Instance: PropTypes.object,
-  Reward: PropTypes.number,
+  Reward: PropTypes.string,
   Account: PropTypes.string,
-  RewardBoost: PropTypes.string
+  RewardBoost: PropTypes.number
 };
 
 export default function Reward({ Instance, Reward, Account, RewardBoost }) {

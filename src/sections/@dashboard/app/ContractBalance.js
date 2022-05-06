@@ -18,9 +18,9 @@ const RootStyle = styled(Card)(({ theme }) => ({
 
 ContractBalance.propTypes = {
   image: PropTypes.string,
-  BalanceContract: PropTypes.number,
-  Participants: PropTypes.number,
-  Hired: PropTypes.number
+  BalanceContract: PropTypes.string,
+  Participants: PropTypes.string,
+  Hired: PropTypes.string
 };
 export default function ContractBalance({ image, BalanceContract, Participants, Hired }) {
   return (

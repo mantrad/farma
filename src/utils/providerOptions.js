@@ -1,6 +1,12 @@
 import WalletConnect from '@walletconnect/web3-provider';
 
 export const providerOptions = {
+  metamask: {
+    id: 'injected',
+    name: 'MetaMask',
+    type: 'injected',
+    check: 'isMetaMask'
+  },
   walletconnect: {
     package: WalletConnect, // required
     options: {

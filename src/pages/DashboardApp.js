@@ -23,7 +23,7 @@ const web3Modal = new Web3Modal({
 });
 // check valid address ref
 export default function DashboardApp() {
-  const { account, provider, projectStats } = useContext(Web3Context);
+  const { account, projectStats, Balance, userStats, Power, Instance } = useContext(Web3Context);
   const [signature, setSignature] = useState('');
   const [error, setError] = useState('');
   const [chainId, setChainId] = useState();
@@ -45,7 +45,22 @@ export default function DashboardApp() {
       setParticipants(ethers.utils.formatUnits(projectStats[1], 0));
       setHired(ethers.utils.formatUnits(projectStats[2], 0));
     }
-  }, [projectStats]);
+    if (Balance) {
+      setBalance(Number(ethers.utils.formatUnits(Balance, 18)).toFixed(5));
+    }
+    if (userStats) {
+      setReward(Number(ethers.utils.formatEther(userStats[0].toString())).toFixed(5));
+      setRewardBoost(
+        120 * +Number(ethers.utils.formatEther(userStats[0].toString()) / 100).toFixed(6)
+      );
+    }
+    if (Power) {
+      setPower(ethers.utils.formatUnits(Power, 0));
+    }
+    if (Instance) {
+      setInstance(Instance);
+    }
+  }, [projectStats, Balance, userStats, Power, Instance]);
   return (
     <Page title="Dashboard | WEREWOLF">
       <Container maxWidth="md">
