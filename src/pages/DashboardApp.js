@@ -49,10 +49,8 @@ export default function DashboardApp() {
       setBalance(Number(ethers.utils.formatUnits(Balance, 18)).toFixed(5));
     }
     if (userStats) {
-      setReward(Number(ethers.utils.formatEther(userStats[0].toString())).toFixed(5));
-      setRewardBoost(
-        120 * +Number(ethers.utils.formatEther(userStats[0].toString()) / 100).toFixed(6)
-      );
+      setReward(Number(ethers.utils.formatEther(userStats[0])).toFixed(5));
+      setRewardBoost(120 * +Number(ethers.utils.formatEther(userStats[0]) / 100).toFixed(6));
     }
     if (Power) {
       setPower(ethers.utils.formatUnits(Power, 0));

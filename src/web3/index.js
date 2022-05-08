@@ -123,7 +123,7 @@ export default function Web3Provider({ children }) {
   const connectWeb3 = useCallback(async () => {
     const previouslyConnectedWallets = JSON.parse(window.localStorage.getItem('connectedWallets'));
     let wallets = null;
-    if (previouslyConnectedWallets[0]) {
+    if (previouslyConnectedWallets && previouslyConnectedWallets[0]) {
       wallets = await onboard.connectWallet({
         autoSelect: { label: previouslyConnectedWallets[0], disableModals: true }
       });
@@ -132,23 +132,32 @@ export default function Web3Provider({ children }) {
     }
     setIsLoading(true);
     const { accounts, chains, provider } = wallets[0];
-    setAccount(accounts[0].address);
-    setChainId(chains[0].id);
-    setProvider(provider);
-    setIsLoading(false);
     const library = new ethers.providers.Web3Provider(provider);
+    const network = await library.getNetwork();
     const instance = new ethers.Contract(contractAddress, contractAbi, library.getSigner());
     setInstance(instance);
     const accountsWallet = await library.listAccounts();
-    const ProjectStats = await instance.getProjectStats();
-    setProjectStats(ProjectStats);
-    const UserStats = await instance.getUserStats(accountsWallet[0]);
-    setUserStats(UserStats);
-    const power = await instance.getUserFishingPower(accountsWallet[0]);
-    setPower(power);
-    console.log(UserStats);
-    const balance = await library.getBalance(accountsWallet[0]);
-    setBalance(balance);
+    if (accountsWallet) {
+      setAccount(accountsWallet[0]);
+      setChainId(network.chainId);
+      setProvider(provider);
+      setIsLoading(false);
+      library.on('block', (blockNumber) => {
+        instance.getProjectStats().then((ProjectStats) => {
+          setProjectStats(ProjectStats);
+          console.log(ProjectStats);
+        });
+        instance.getUserStats(accountsWallet[0]).then((UserStats) => {
+          setUserStats(UserStats);
+        });
+        instance.getUserFishingPower(accountsWallet[0]).then((Power) => {
+          setPower(Power);
+        });
+        library.getBalance(accountsWallet[0]).then((Balance) => {
+          setBalance(Balance);
+        });
+      });
+    }
   }, []);
 
   useEffect(() => {

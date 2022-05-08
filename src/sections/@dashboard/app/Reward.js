@@ -2,9 +2,18 @@ import { faker } from '@faker-js/faker';
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 // material
-import { Box, Stack, Card, CardHeader, Typography, TextField } from '@mui/material';
-
+import {
+  Box,
+  Stack,
+  Card,
+  CardHeader,
+  Typography,
+  TextField,
+  Tooltip,
+  IconButton
+} from '@mui/material';
 import { LoadingButton } from '@mui/lab';
+import Iconify from '../../../components/Iconify';
 
 Reward.propTypes = {
   Instance: PropTypes.object,
@@ -46,6 +55,15 @@ export default function Reward({ Instance, Reward, Account, RewardBoost }) {
         <Stack direction="row" sx={{ px: 0, pt: 1 }}>
           <Typography variant="body2" sx={{ flexGrow: 1, m: 0 }} noWrap>
             65% chance
+            <Tooltip
+              title="65% chance to earn base rewards"
+              disableFocusListener
+              disableTouchListener
+            >
+              <IconButton>
+                <Iconify icon="fa:question-circle" width={15} height={15} />
+              </IconButton>
+            </Tooltip>
           </Typography>
           <Typography variant="body2" sx={{ px: 3, py: 0 }} noWrap>
             {Reward || '0'} AVAX
