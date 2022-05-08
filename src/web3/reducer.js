@@ -35,6 +35,11 @@ export const Web3Reducer = (state, action) => {
         ...state,
         Instance: action.payload
       };
+    case 'SET_CHAINID':
+      return {
+        ...state,
+        ChainId: action.payload
+      };
     default:
       return state;
   }

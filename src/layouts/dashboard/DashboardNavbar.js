@@ -44,7 +44,7 @@ DashboardNavbar.propTypes = {
 };
 
 export default function DashboardNavbar({ onOpenSidebar }) {
-  const { account, connectWeb3, logout } = useContext(Web3Context);
+  const { account, connectWeb3, logout, ChainId, switchNetwork } = useContext(Web3Context);
   return (
     <RootStyle>
       <ToolbarStyle>
@@ -70,7 +70,21 @@ export default function DashboardNavbar({ onOpenSidebar }) {
           spacing={{ xs: 0.5, sm: 1.5 }}
           px={{ xs: 1, sm: 2, md: 50 }}
         >
-          {!account ? (
+          {ChainId !== 43114 ? (
+            <Button variant="outlined" onClick={switchNetwork}>
+              Switch Network
+            </Button>
+          ) : (
+            ''
+          )}
+          {account && ChainId === 43114 ? (
+            <Button variant="outlined" onClick={logout}>
+              {`${truncateAddress(account)}`}
+            </Button>
+          ) : (
+            ''
+          )}
+          {!account && ChainId === 43114 ? (
             <Button
               variant="outlined"
               onClick={connectWeb3}
@@ -79,9 +93,7 @@ export default function DashboardNavbar({ onOpenSidebar }) {
               MetaMask
             </Button>
           ) : (
-            <Button variant="outlined" onClick={logout}>
-              {`${truncateAddress(account)}`}
-            </Button>
+            ''
           )}
         </Stack>
       </ToolbarStyle>

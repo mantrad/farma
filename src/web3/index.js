@@ -7,6 +7,7 @@ import walletConnectModule from '@web3-onboard/walletconnect';
 import walletLinkModule from '@web3-onboard/walletlink';
 import { Web3Reducer } from './reducer';
 import { providerOptions } from '../utils/providerOptions';
+import { toHex } from '../utils/utils';
 import contractAbi from '../contracts/abi.json';
 
 const contractAddress = '0x8BeA96dBe7C85127A68aD6916949670eB5c45e9c';
@@ -54,10 +55,8 @@ export default function Web3Provider({ children }) {
   const [state, dispatch] = useReducer(Web3Reducer, initialState);
   const [provider, setProviderA] = useState();
   const [library, setLibrary] = useState();
-  const [account, setAccountA] = useState();
   const [signature, setSignature] = useState('');
   const [error, setError] = useState('');
-  const [chainId, setChainId] = useState();
   const [network, setNetwork] = useState();
   const [message, setMessage] = useState('');
   const [signedMessage, setSignedMessage] = useState('');
@@ -107,6 +106,12 @@ export default function Web3Provider({ children }) {
       payload: Instance
     });
   };
+  const setChainId = (ChainId) => {
+    dispatch({
+      type: 'SET_CHAINID',
+      payload: ChainId
+    });
+  };
   const logout = async () => {
     const [primaryWallet] = await onboard.state.get().wallets;
     if (!primaryWallet) return;
@@ -114,7 +119,9 @@ export default function Web3Provider({ children }) {
     setAccount();
     setProvider();
   };
-
+  const switchNetwork = async () => {
+    await onboard.setChain({ chainId: '0xA86A' });
+  };
   const walletsSub = onboard.state.select('wallets');
   const { unsubscribe } = walletsSub.subscribe((wallets) => {
     const connectedWallets = wallets.map(({ label }) => label);
@@ -139,6 +146,7 @@ export default function Web3Provider({ children }) {
     const accountsWallet = await library.listAccounts();
     if (accountsWallet) {
       setAccount(accountsWallet[0]);
+      console.log(accountsWallet[0]);
       setChainId(network.chainId);
       setProvider(provider);
       setIsLoading(false);
@@ -175,6 +183,7 @@ export default function Web3Provider({ children }) {
       };
 
       const handleChainChanged = (_hexChainId) => {
+        console.log(_hexChainId);
         setChainId(_hexChainId);
       };
 
@@ -207,7 +216,8 @@ export default function Web3Provider({ children }) {
       value={{
         ...state,
         connectWeb3,
-        logout
+        logout,
+        switchNetwork
       }}
     >
       {children}

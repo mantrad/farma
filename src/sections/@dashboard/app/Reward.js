@@ -57,6 +57,7 @@ export default function Reward({ Instance, Reward, Account, RewardBoost }) {
             65% chance
             <Tooltip
               title="65% chance to earn base rewards"
+              placement="top"
               disableFocusListener
               disableTouchListener
             >
@@ -72,6 +73,16 @@ export default function Reward({ Instance, Reward, Account, RewardBoost }) {
         <Stack direction="row" sx={{ px: 0, py: 0, pt: 0 }}>
           <Typography variant="body2" sx={{ flexGrow: 1, m: 0 }} noWrap>
             35% chance
+            <Tooltip
+              title="35% chance to earn 120% rewards"
+              placement="top"
+              disableFocusListener
+              disableTouchListener
+            >
+              <IconButton>
+                <Iconify icon="fa:question-circle" width={15} height={15} />
+              </IconButton>
+            </Tooltip>
           </Typography>
           <Typography variant="body2" sx={{ px: 3, py: 0 }} noWrap>
             {RewardBoost || '0'} AVAX
@@ -82,6 +93,16 @@ export default function Reward({ Instance, Reward, Account, RewardBoost }) {
         <Stack direction="row" sx={{ px: 0, pt: 3 }}>
           <Typography variant="body1" sx={{ flexGrow: 1, m: 0 }} noWrap>
             Sell
+            <Tooltip
+              title={`Claim and receive ${Reward || 0} avax`}
+              placement="top"
+              disableFocusListener
+              disableTouchListener
+            >
+              <IconButton>
+                <Iconify icon="fa:question-circle" width={15} height={15} />
+              </IconButton>
+            </Tooltip>
           </Typography>
         </Stack>
         <Stack direction="row" sx={{ px: 0, pt: 2 }}>
