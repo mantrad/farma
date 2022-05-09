@@ -200,7 +200,6 @@ export default function Web3Provider({ children }) {
       provider.on('accountsChanged', handleAccountsChanged);
       provider.on('chainChanged', handleChainChanged);
       provider.on('disconnect', handleDisconnect);
-
       return () => {
         if (provider.removeListener) {
           provider.removeListener('accountsChanged', handleAccountsChanged);
