@@ -45,6 +45,7 @@ DashboardNavbar.propTypes = {
 
 export default function DashboardNavbar({ onOpenSidebar }) {
   const { account, connectWeb3, logout, ChainId, switchNetwork } = useContext(Web3Context);
+  useEffect(() => {}, [account, connectWeb3, logout, ChainId, switchNetwork]);
   return (
     <RootStyle>
       <ToolbarStyle>
