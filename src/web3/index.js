@@ -196,7 +196,6 @@ export default function Web3Provider({ children }) {
       const handleConnect = () => {
         console.log('connect');
       };
-      console.log(provider);
       provider.on('connect', handleConnect);
       provider.on('accountsChanged', handleAccountsChanged);
       provider.on('chainChanged', handleChainChanged);
