@@ -141,14 +141,15 @@ export default function Web3Provider({ children }) {
     const { accounts, chains, provider } = wallets[0];
     const library = new ethers.providers.Web3Provider(provider);
     const network = await library.getNetwork();
+    setChainId(network.chainId);
     const instance = new ethers.Contract(contractAddress, contractAbi, library.getSigner());
     setInstance(instance);
     const accountsWallet = await library.listAccounts();
     if (accountsWallet) {
       setAccount(accountsWallet[0]);
       console.log(accountsWallet[0]);
-      setChainId(network.chainId);
       setProvider(provider);
+      setProviderA(provider);
       setIsLoading(false);
       library.on('block', (blockNumber) => {
         instance.getProjectStats().then((ProjectStats) => {
@@ -183,8 +184,9 @@ export default function Web3Provider({ children }) {
       };
 
       const handleChainChanged = (_hexChainId) => {
-        console.log(_hexChainId);
-        setChainId(_hexChainId);
+        const ChainId = parseInt(_hexChainId, 16);
+        console.log(ChainId);
+        setChainId(ChainId);
       };
 
       const handleDisconnect = () => {
